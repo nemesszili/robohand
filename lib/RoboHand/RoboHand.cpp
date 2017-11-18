@@ -44,8 +44,8 @@ void RoboHand::setAngle(int index, float angle) {
     if (index < 0 || index > 4)
         return;
 
-    if (angle > 1.0 || angle < 0.0)
-        return;
+    angle = angle > 1.0 ? 1.0 : angle;
+    angle = angle < 0.0 ? 0.0 : angle;
 
     fingers[index].write(angle * (maxAngles[index] - minAngles[index]) + minAngles[index]);
 }
