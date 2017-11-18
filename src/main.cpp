@@ -17,11 +17,10 @@ void loop() {
         roboHand.stretch(i);
         Serial.printf("Stretching %d finger\n", i);
         delay(WAIT);
-    }
 
-    for (int i = 0; i < 5; ++i) {
         roboHand.pull(i);
         Serial.printf("Pulling %d finger\n", i);
         delay(WAIT);
     }
+
 }

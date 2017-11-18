@@ -1,5 +1,7 @@
 #include "RoboHand.h"
 
+#define MOVE_WAIT 100
+
 RoboHand::RoboHand(int thumb, int index, int middle, int ring, int pinky) {
     fingers[0].attach(thumb);
     fingers[1].attach(index);
@@ -18,14 +20,24 @@ void RoboHand::pull(int index) {
     if (index < 0 || index > 4)
         return;
     
-    fingers[index].write(minAngles[index]);
+    float currAngle = (float)(fingers[index].read() - minAngles[index]) / (maxAngles[index] - minAngles[index]);
+
+    for (float i = currAngle; i > 0.0; i -= 0.2){
+        setAngle(index, i);
+        delay(MOVE_WAIT);
+    }
 }
 
 void RoboHand::stretch(int index) {
     if (index < 0 || index > 4)
         return;
     
-    fingers[index].write(maxAngles[index]);
+     float currAngle = (float)(fingers[index].read() - minAngles[index]) / (maxAngles[index] - minAngles[index]);
+
+    for (float i = currAngle; i < 1.0; i += 0.2){
+        setAngle(index, i);
+        delay(MOVE_WAIT);
+    }
 }
 
 void RoboHand::setAngle(int index, float angle) {
