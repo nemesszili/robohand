@@ -16,6 +16,7 @@ public:
     // 0 - pulled in
     // 1 - stretched
     // (0-1) - in between
+    void setFastAngle(int, float);
     void setAngle(int, float);
     void stretch(int);
     void pull(int);
@@ -26,6 +27,8 @@ private:
     Servo fingers[5];
     int minAngles[5] = {0, 15, 5, 0, 15};
     int maxAngles[5] = {120, 90, 110, 110, 80};
+
+    float _getCurrAngle(int);
 };
 
 #endif
