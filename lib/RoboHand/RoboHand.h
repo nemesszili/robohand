@@ -25,8 +25,8 @@ public:
     ~RoboHand();
 private:
     Servo fingers[5];
-    int minAngles[5] = {0, 15, 5, 0, 15};
-    int maxAngles[5] = {120, 90, 110, 110, 80};
+    int minAngles[5] = {0, 15, 5, 0, 0};
+    int maxAngles[5] = {80, 90, 100, 90, 00};
 
     float _getCurrAngle(int);
 };
