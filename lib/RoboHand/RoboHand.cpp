@@ -16,7 +16,7 @@ float RoboHand::_getCurrAngle(int index) {
 
 void RoboHand::reset() {
     for (int i = 0; i < 5; ++i) {
-        fingers[i].write(minAngles[i]);
+        fingers[i].write((minAngles[i]+maxAngles[i])/2);
     }
 }
 
